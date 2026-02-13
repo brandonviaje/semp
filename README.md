@@ -7,4 +7,3 @@ I decided to write a compiler for CSCI4020U. It demonstrates the process of tran
 ## How it works
 
 The data flow for the compiler:
-![Compiler Diagram](images/compiler-diagram.png)
