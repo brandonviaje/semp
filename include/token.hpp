@@ -1,5 +1,5 @@
 #pragma once
-#include <ostream> 
+#include <ostream>
 
 namespace semp
 {
@@ -17,18 +17,21 @@ namespace semp
         int line;
     };
 
-    const char* to_string(TokenType type) 
+    inline const char *to_string(TokenType type)
     {
-        switch(type) 
+        switch (type)
         {
-            case TokenType::_RETURN: return "RETURN";
-            case TokenType::_INT_LITERAL: return "INT_LITERAL";
-            case TokenType::_SEMICOLON: return "SEMICOLON";
+        case TokenType::_RETURN:
+            return "RETURN";
+        case TokenType::_INT_LITERAL:
+            return "INT_LITERAL";
+        case TokenType::_SEMICOLON:
+            return "SEMICOLON";
         }
         return "UNKNOWN";
     }
 
-    std::ostream& operator<<(std::ostream& os, const Token& token) 
+    inline std::ostream &operator<<(std::ostream &os, const Token &token)
     {
         os << to_string(token.type) << "(" << token.lexeme << ")";
         return os;

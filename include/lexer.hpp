@@ -7,12 +7,14 @@ namespace semp
 {
     class Lexer
     {
-        private:
+    private:
+        std::string contents;
 
-        public:
+    public:
+        Lexer(std::string file_path) : contents{load_file(file_path)}
+        {
+        }
+        std::string load_file(std::string file_path);
+        std::vector<Token> tokenize();
     };
-
-
-    // scan tokens after we tokenize
 };
-
