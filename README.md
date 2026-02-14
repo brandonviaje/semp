@@ -1,4 +1,4 @@
-# CSCI4020U Compiler
+# Compiler
 
 ## Overview
 
