@@ -19,7 +19,6 @@ std::vector<semp::Token> semp::Lexer::tokenize()
 {
     std::vector<semp::Token> tokens;
     std::string buffer;
-
     std::size_t i{};
 
     // read through source file char by char
@@ -42,6 +41,21 @@ std::vector<semp::Token> semp::Lexer::tokenize()
             continue;
         }
 
+        // parentheses
+        if (c == '{')
+        {
+            tokens.push_back({semp::TokenType::_LEFT_PARENS, "{", 0});
+            i++;
+            continue;
+        }
+
+        if (c == '}')
+        {
+            tokens.push_back({semp::TokenType::_RIGHT_PARENS, "}", 0});
+            i++;
+            continue;
+        }
+
         // identifier / keyword
         if (std::isalpha(c))
         {
@@ -59,9 +73,32 @@ std::vector<semp::Token> semp::Lexer::tokenize()
             }
             else
             {
-                std::cerr << "Unknown identifier: " << buffer << std::endl;
+                std::cerr << "Unknown Token: " << buffer << std::endl;
                 exit(EXIT_FAILURE);
             }
+            continue;
+        }
+
+        // str literal
+        if (c == '"')
+        {
+            buffer.clear();
+            i++; // skip begining quote
+
+            while (i < contents.length())
+            {
+                if (contents[i] == '"')
+                {
+                    i++; // skip closing quote
+                    break;
+                }
+                else
+                {
+                    buffer.push_back(contents[i]);
+                    i++;
+                }
+            }
+            tokens.push_back({semp::TokenType::_STR_LITERAL, buffer, 0}); // add to tokens
             continue;
         }
 

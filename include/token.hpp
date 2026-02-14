@@ -7,6 +7,8 @@ namespace semp
     {
         _RETURN,
         _INT_LITERAL,
+        _LEFT_PARENS,
+        _RIGHT_PARENS,
         _SEMICOLON
     };
 
@@ -25,6 +27,10 @@ namespace semp
             return "RETURN";
         case TokenType::_INT_LITERAL:
             return "INT_LITERAL";
+        case TokenType::_LEFT_PARENS:
+            return "LEFT_PARENTHESES";
+        case TokenType::_RIGHT_PARENS:
+            return "RIGHT_PARENTHESES";
         case TokenType::_SEMICOLON:
             return "SEMICOLON";
         }
