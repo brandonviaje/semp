@@ -9,7 +9,7 @@ std::string load_file(const char* file_path) {
   std::fstream input(file_path, std::ios::in);
 
   if (!input) {
-    std::cerr << "Could not open file: " << file_path << std::endl;
+    std::cerr << "Could not open file: " << file_path << '\n';
     exit(EXIT_FAILURE);
   }
 

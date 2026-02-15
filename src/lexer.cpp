@@ -84,6 +84,9 @@ std::vector<semp::Token> semp::Lexer::tokenize() {
         tokens.push_back({TokenType::_RIGHT_BRACE, "}", line});
         i++;
         continue;
+      default:
+        std::cerr << "Line " << line << ": Unexpected character '" << c << "'\n";
+        exit(EXIT_FAILURE);
     }
 
     std::cerr << "Line " << line << ": Unexpected character '" << c << "'\n";
