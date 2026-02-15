@@ -85,7 +85,8 @@ std::vector<semp::Token> semp::Lexer::tokenize() {
         i++;
         continue;
       default:
-        std::cerr << "Line " << line << ": Unexpected character '" << c << "'\n";
+        std::cerr << "Line " << line << ": Unexpected character '" << c
+                  << "'\n";
         exit(EXIT_FAILURE);
     }
 
