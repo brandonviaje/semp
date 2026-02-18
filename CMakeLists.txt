@@ -10,12 +10,36 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG release-1.12.1
 )
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
+
+# C-lang
+
+find_program(CLANG_FORMAT_EXE NAMES clang-format)
+
+if(CLANG_FORMAT_EXE)
+    message(STATUS "clang-format found: ${CLANG_FORMAT_EXE}")
+
+    file(GLOB_RECURSE ALL_SOURCE_FILES
+        ${PROJECT_SOURCE_DIR}/src/*.cpp
+        ${PROJECT_SOURCE_DIR}/include/*.hpp
+        ${PROJECT_SOURCE_DIR}/tests/*.cpp
+    )
+
+    add_custom_target(
+        format
+        COMMAND ${CLANG_FORMAT_EXE} -i ${ALL_SOURCE_FILES}
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+        COMMENT "Formatting all source files"
+    )
+
+else()
+    message(WARNING "clang-format NOT found! Formatting disabled.")
+endif()
 
 # Linter
 find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
