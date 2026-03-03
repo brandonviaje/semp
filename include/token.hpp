@@ -10,6 +10,10 @@ enum class TokenType {
   _STR_LITERAL,
   _LEFT_BRACE,
   _RIGHT_BRACE,
+  _LEFT_PAREN,
+  _RIGHT_PAREN,
+  _PLUS,
+  _STAR,
   _SEMICOLON,
   _EOF
 };
@@ -34,6 +38,14 @@ inline const char* to_string(TokenType type) {
       return "LEFT_BRACE";
     case TokenType::_RIGHT_BRACE:
       return "RIGHT_BRACE";
+    case TokenType::_LEFT_PAREN:
+      return "LEFT_PAREN";
+    case TokenType::_RIGHT_PAREN:
+      return "RIGHT_PAREN";
+    case TokenType::_PLUS:
+      return "PLUS";
+    case TokenType::_STAR:
+      return "STAR";
     case TokenType::_SEMICOLON:
       return "SEMICOLON";
     case TokenType::_EOF:
