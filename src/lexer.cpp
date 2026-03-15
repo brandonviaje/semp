@@ -90,6 +90,18 @@ std::vector<semp::Token> semp::Lexer::tokenize() {
       case '}':
         tokens.push_back({TokenType::_RIGHT_BRACE, "}", m_line});
         break;
+      case '(':
+        tokens.push_back({TokenType::_LEFT_PAREN, "(", m_line});
+        break;
+      case ')':
+        tokens.push_back({TokenType::_RIGHT_PAREN, ")", m_line});
+        break;
+      case '+':
+        tokens.push_back({TokenType::_PLUS, "+", m_line});
+        break;
+      case '*':
+        tokens.push_back({TokenType::_STAR, "*", m_line});
+        break;
       default:
         throw std::runtime_error("Line " + std::to_string(m_line) +
                                  ": Unknown character '" + c + "'");

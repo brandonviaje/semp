@@ -9,10 +9,12 @@ bool Parser::isAtEnd() const {
 }
 
 semp::Token Parser::peek() const {
+  // return current token
   return m_tokens[m_current];
 }
 
 semp::Token Parser::previous() const {
+  // return prev token
   return m_tokens[m_current - 1];
 }
 
@@ -40,6 +42,7 @@ bool Parser::match(semp::TokenType type) {
 
 semp::Token Parser::expect(semp::TokenType type,
                            const std::string& error_message) {
+  // check if token type matches
   if (match(type)) {
     return previous();
   }
